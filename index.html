@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Your Cash Reward | Instant Reward Access</title>
+    <title>Earn Cash & Rewards | Freecash App & Offer Testing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -16,28 +16,25 @@
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            900: '#064e3b',
-                            accent: '#00D632' // Classic Cash App Vibrant Green
+                        freecash: {
+                            50: '#e6fcf5',
+                            100: '#c2f7e4',
+                            400: '#22c55e',
+                            500: '#00e599', // Freecash signature neon mint green
+                            600: '#00c382',
+                            700: '#009d68',
+                            900: '#0d281e',
+                            dark: '#0e131f', // Freecash dark background tone
+                            card: '#161c2b'  // Freecash elevated container color
                         }
                     },
                     animation: {
-                        'pulse-fast': 'pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'slide-up': 'slideUp 0.4s ease-out forwards',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' },
-                        },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(16px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -47,213 +44,206 @@
     </script>
     
     <style>
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .freecash-glow {
+            box-shadow: 0 0 30px -5px rgba(0, 229, 153, 0.25);
+        }
+        .freecash-btn-glow {
+            box-shadow: 0 0 20px 0px rgba(0, 229, 153, 0.4);
+        }
+        .freecash-btn-glow:hover {
+            box-shadow: 0 0 28px 4px rgba(0, 229, 153, 0.6);
         }
         .glass-card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glow-effect {
-            box-shadow: 0 0 35px -5px rgba(0, 214, 50, 0.35);
-        }
-        .glow-btn {
-            box-shadow: 0 0 20px 0px rgba(0, 214, 50, 0.5);
-        }
-        .glow-btn:hover {
-            box-shadow: 0 0 30px 5px rgba(0, 214, 50, 0.75);
+            background: rgba(22, 28, 43, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-brand-accent selection:text-slate-950 overflow-x-hidden flex flex-col">
+<body class="bg-freecash-dark text-slate-100 font-sans min-h-screen selection:bg-freecash-500 selection:text-slate-950 flex flex-col antialiased">
 
-    <!-- Top Announcement / Urgency Bar -->
-    <div class="bg-gradient-to-r from-emerald-900 via-brand-700 to-emerald-900 text-white text-xs md:text-sm py-2.5 px-4 text-center font-semibold tracking-wide border-b border-emerald-500/20 shadow-lg flex items-center justify-center gap-2">
-        <span class="inline-block w-2.5 h-2.5 rounded-full bg-brand-accent animate-pulse-fast"></span>
-        <span>SPECIAL PROMOTION: Limited Reward Slots Remaining Today!</span>
-        <div class="hidden sm:inline-flex items-center ml-2 bg-slate-900/60 px-2.5 py-0.5 rounded-full text-brand-accent font-mono text-xs border border-brand-accent/30">
-            <i class="far fa-clock mr-1.5"></i> Ends in: <span id="timer" class="ml-1 font-bold">04:59</span>
-        </div>
+    <!-- Live Activity Banner -->
+    <div class="bg-gradient-to-r from-freecash-900 via-slate-900 to-freecash-900 text-white text-xs py-2 px-4 text-center border-b border-freecash-500/20 flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-freecash-500 animate-pulse-fast"></span>
+        <span class="font-medium text-slate-200">Featured App & Gaming Tasks Now Open</span>
+        <span class="hidden sm:inline-block text-slate-400">• Higher earnings available for mobile users</span>
     </div>
 
     <!-- Navigation Header -->
     <header class="w-full max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-accent flex items-center justify-center text-slate-950 text-xl font-black shadow-md shadow-brand-500/20">
-                <i class="fas fa-dollar-sign text-2xl text-slate-950"></i>
+        <div class="flex items-center gap-2.5">
+            <!-- Authentic Freecash Brand Icon Styling -->
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-freecash-600 to-freecash-500 flex items-center justify-center text-slate-950 font-black shadow-md shadow-freecash-500/20">
+                <i class="fas fa-coins text-xl text-slate-950"></i>
             </div>
-            <span class="text-xl font-extrabold tracking-tight text-white">Cash<span class="text-brand-accent">Rewards</span></span>
+            <div class="flex flex-col">
+                <span class="text-xl font-extrabold tracking-tight text-white leading-none">Free<span class="text-freecash-500">cash</span></span>
+                <span class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Official Partner Offer</span>
+            </div>
         </div>
-        <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-full border border-slate-800 text-xs text-slate-300">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span class="font-medium text-emerald-400">984 Slots Claimed</span>
+
+        <div class="flex items-center gap-2 bg-freecash-card px-3 py-1.5 rounded-full border border-slate-800 text-xs">
+            <i class="fas fa-shield-alt text-freecash-500"></i>
+            <span class="font-medium text-slate-300">Verified Platform</span>
         </div>
     </header>
 
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 md:py-10">
-        <!-- Hero Section -->
         <div class="grid lg:grid-cols-12 gap-8 items-center mb-16">
             
             <!-- Left Hero Content -->
             <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-accent text-xs md:text-sm font-semibold">
-                    <i class="fas fa-bolt text-yellow-400"></i> Instant Mobile Verification Available
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-freecash-500/10 border border-freecash-500/25 text-freecash-500 text-xs sm:text-sm font-semibold">
+                    <i class="fas fa-gamepad text-yellow-400"></i> Earn Cash & Gift Cards For Testing Apps
                 </div>
 
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
-                    Claim Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-emerald-400 to-teal-300">$750 Cash App</span> Reward Today!
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
+                    Get Paid to Play Games & Test Free Apps on <span class="text-transparent bg-clip-text bg-gradient-to-r from-freecash-500 to-teal-300">Freecash</span>
                 </h1>
 
                 <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    Complete simple featured deals, download sponsored apps, or take short surveys to receive your instant payout directly to your Cash App account.
+                    Join millions of users earning real rewards by testing mobile applications, playing new games, and completing partner surveys. Payout earnings vary based on completed tasks.
                 </p>
 
-                <!-- Key Benefits List -->
+                <!-- Value Highlights -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-left max-w-lg mx-auto lg:mx-0 text-xs sm:text-sm text-slate-300">
-                    <div class="flex items-center gap-2 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
-                        <i class="fas fa-check-circle text-brand-accent text-base"></i>
-                        <span>100% Free Entry</span>
+                    <div class="flex items-center gap-2 bg-freecash-card p-3 rounded-xl border border-slate-800">
+                        <i class="fas fa-check text-freecash-500 text-base"></i>
+                        <span>Instant Payout Options</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
-                        <i class="fas fa-check-circle text-brand-accent text-base"></i>
-                        <span>Instant Transfer</span>
+                    <div class="flex items-center gap-2 bg-freecash-card p-3 rounded-xl border border-slate-800">
+                        <i class="fas fa-check text-freecash-500 text-base"></i>
+                        <span>Flexible Earnings</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900/50 p-2.5 rounded-lg border border-slate-800 col-span-2 sm:col-span-1">
-                        <i class="fas fa-check-circle text-brand-accent text-base"></i>
-                        <span>No Password Needed</span>
+                    <div class="flex items-center gap-2 bg-freecash-card p-3 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
+                        <i class="fas fa-check text-freecash-500 text-base"></i>
+                        <span>100% Free Signup</span>
                     </div>
                 </div>
 
-                <!-- Live Payout Ticker Bar -->
+                <!-- Trust Stats -->
                 <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-xs text-slate-400 border-t border-slate-800/80">
-                    <div class="flex -space-x-2">
-                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-900" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="User Avatar">
-                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-900" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="User Avatar">
-                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-900" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="User Avatar">
+                    <div class="flex items-center gap-1.5 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
                     </div>
                     <div>
-                        <p class="font-semibold text-slate-200">$142,850+ Total Paid Out</p>
-                        <p class="text-slate-400">Over 3,400 verified completions</p>
+                        <p class="font-bold text-slate-200">Trustpilot Verified Rating</p>
+                        <p class="text-slate-400">Based on thousands of community reviews</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Interactive Quiz / Eligibility Widget -->
+            <!-- Right Column: Interactive Quiz / Matcher -->
             <div class="lg:col-span-5">
-                <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect relative overflow-hidden">
-                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl"></div>
+                <div class="bg-freecash-card rounded-3xl p-6 sm:p-8 border border-slate-800 freecash-glow relative overflow-hidden">
                     
-                    <!-- Widget Header -->
                     <div class="text-center mb-6">
-                        <div class="inline-block px-3 py-1 bg-brand-accent/20 rounded-full text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">
-                            Interactive Quiz
+                        <div class="inline-block px-3 py-1 bg-freecash-500/15 rounded-full text-freecash-500 text-xs font-bold uppercase tracking-wider mb-2">
+                            Offer Matcher
                         </div>
-                        <h2 class="text-xl sm:text-2xl font-bold text-white">Check Your Eligibility</h2>
-                        <p class="text-slate-400 text-xs sm:text-sm mt-1">Answer 3 simple questions to unlock your reward</p>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white">Find High-Paying Tasks</h2>
+                        <p class="text-slate-400 text-xs sm:text-sm mt-1">Select your preferences to view available offers</p>
                     </div>
 
-                    <!-- Progress Bar -->
-                    <div class="w-full bg-slate-800 h-2 rounded-full mb-6 overflow-hidden">
-                        <div id="quiz-progress" class="bg-gradient-to-r from-brand-600 to-brand-accent h-full w-1/3 transition-all duration-300"></div>
+                    <!-- Progress Indicator -->
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full mb-6 overflow-hidden">
+                        <div id="quiz-progress" class="bg-freecash-500 h-full w-1/3 transition-all duration-300"></div>
                     </div>
 
-                    <!-- QUIZ STEP 1: Device Selection -->
-                    <div id="step-1" class="space-y-4">
-                        <label class="block text-sm font-semibold text-slate-200 mb-2 text-center">
-                            Step 1: Select your primary device platform
+                    <!-- STEP 1: Device Selection -->
+                    <div id="step-1" class="space-y-3">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider text-center mb-2">
+                            Which device will you test apps on?
                         </label>
-                        <div class="grid grid-cols-1 gap-3">
-                            <button onclick="nextStep(2)" class="w-full py-3.5 px-4 bg-slate-800/80 hover:bg-brand-600/30 border border-slate-700 hover:border-brand-accent rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
-                                <span class="flex items-center gap-3">
-                                    <i class="fab fa-apple text-xl text-slate-400 group-hover:text-brand-accent"></i> iOS Device (iPhone / iPad)
-                                </span>
-                                <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-brand-accent"></i>
-                            </button>
-                            <button onclick="nextStep(2)" class="w-full py-3.5 px-4 bg-slate-800/80 hover:bg-brand-600/30 border border-slate-700 hover:border-brand-accent rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
-                                <span class="flex items-center gap-3">
-                                    <i class="fab fa-android text-xl text-slate-400 group-hover:text-brand-accent"></i> Android Phone / Tablet
-                                </span>
-                                <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-brand-accent"></i>
-                            </button>
-                            <button onclick="nextStep(2)" class="w-full py-3.5 px-4 bg-slate-800/80 hover:bg-brand-600/30 border border-slate-700 hover:border-brand-accent rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
-                                <span class="flex items-center gap-3">
-                                    <i class="fas fa-desktop text-xl text-slate-400 group-hover:text-brand-accent"></i> Windows / Mac Laptop
-                                </span>
-                                <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-brand-accent"></i>
-                            </button>
-                        </div>
+                        <button onclick="nextStep(2)" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="flex items-center gap-3 text-sm">
+                                <i class="fab fa-apple text-lg text-slate-400 group-hover:text-freecash-500"></i> iOS (iPhone / iPad)
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
+                        <button onclick="nextStep(2)" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="flex items-center gap-3 text-sm">
+                                <i class="fab fa-android text-lg text-slate-400 group-hover:text-freecash-500"></i> Android Device
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
+                        <button onclick="nextStep(2)" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="flex items-center gap-3 text-sm">
+                                <i class="fas fa-desktop text-lg text-slate-400 group-hover:text-freecash-500"></i> Desktop / PC
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
                     </div>
 
-                    <!-- QUIZ STEP 2: Usage Frequency -->
-                    <div id="step-2" class="space-y-4 hidden">
-                        <label class="block text-sm font-semibold text-slate-200 mb-2 text-center">
-                            Step 2: How often do you use Cash App?
+                    <!-- STEP 2: Preferred Task Category -->
+                    <div id="step-2" class="space-y-3 hidden">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider text-center mb-2">
+                            What task types do you prefer?
                         </label>
-                        <div class="grid grid-cols-1 gap-3">
-                            <button onclick="nextStep(3)" class="w-full py-3.5 px-4 bg-slate-800/80 hover:bg-brand-600/30 border border-slate-700 hover:border-brand-accent rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
-                                <span>Daily / Weekly</span>
-                                <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-brand-accent"></i>
-                            </button>
-                            <button onclick="nextStep(3)" class="w-full py-3.5 px-4 bg-slate-800/80 hover:bg-brand-600/30 border border-slate-700 hover:border-brand-accent rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
-                                <span>A few times a month</span>
-                                <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-brand-accent"></i>
-                            </button>
-                            <button onclick="nextStep(3)" class="w-full py-3.5 px-4 bg-slate-800/80 hover:bg-brand-600/30 border border-slate-700 hover:border-brand-accent rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
-                                <span>I need to create a new account</span>
-                                <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-brand-accent"></i>
-                            </button>
-                        </div>
+                        <button onclick="nextStep(3)" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="text-sm"><i class="fas fa-gamepad text-freecash-500 mr-2"></i> Testing Games & Leveling Up</span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
+                        <button onclick="nextStep(3)" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="text-sm"><i class="fas fa-mobile-alt text-freecash-500 mr-2"></i> Trying New Mobile Apps</span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
+                        <button onclick="nextStep(3)" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="text-sm"><i class="fas fa-clipboard-list text-freecash-500 mr-2"></i> Quick Opinion Surveys</span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
                     </div>
 
-                    <!-- QUIZ STEP 3: Willingness to Complete Tasks -->
-                    <div id="step-3" class="space-y-4 hidden">
-                        <label class="block text-sm font-semibold text-slate-200 mb-2 text-center">
-                            Step 3: Are you willing to complete 2-3 simple partner tasks?
+                    <!-- STEP 3: Time Commitment -->
+                    <div id="step-3" class="space-y-3 hidden">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider text-center mb-2">
+                            How much spare time do you have?
                         </label>
-                        <div class="grid grid-cols-1 gap-3">
-                            <button onclick="startVerification()" class="w-full py-3.5 px-4 bg-brand-accent text-slate-950 font-bold rounded-xl text-center hover:bg-emerald-400 transition-all duration-200 shadow-lg glow-btn">
-                                YES, I'm Ready to Claim!
-                            </button>
-                            <button onclick="startVerification()" class="w-full py-3 px-4 bg-slate-800/80 border border-slate-700 text-slate-300 font-medium rounded-xl text-center hover:bg-slate-700 transition-all duration-200 text-sm">
-                                Show Me Available Deals
-                            </button>
-                        </div>
+                        <button onclick="startVerification()" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="text-sm">Casual (5-15 mins/day)</span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
+                        <button onclick="startVerification()" class="w-full py-3.5 px-4 bg-slate-900/90 hover:bg-freecash-900/40 border border-slate-700/80 hover:border-freecash-500/80 rounded-xl text-left font-medium text-slate-200 hover:text-white transition-all duration-200 flex items-center justify-between group">
+                            <span class="text-sm">Regular Gamer (1+ hours/day)</span>
+                            <i class="fas fa-chevron-right text-xs text-slate-500 group-hover:text-freecash-500"></i>
+                        </button>
                     </div>
 
-                    <!-- QUIZ STEP 4: Verification Processing Animation -->
+                    <!-- STEP 4: Matching Animation -->
                     <div id="step-loading" class="text-center py-8 space-y-4 hidden">
-                        <div class="relative w-16 h-16 mx-auto">
-                            <div class="absolute top-0 left-0 w-full h-full border-4 border-slate-700 rounded-full"></div>
-                            <div class="absolute top-0 left-0 w-full h-full border-4 border-brand-accent rounded-full animate-spin border-t-transparent"></div>
+                        <div class="relative w-14 h-14 mx-auto">
+                            <div class="absolute top-0 left-0 w-full h-full border-4 border-slate-800 rounded-full"></div>
+                            <div class="absolute top-0 left-0 w-full h-full border-4 border-freecash-500 rounded-full animate-spin border-t-transparent"></div>
                         </div>
-                        <p id="loading-status" class="text-slate-300 font-medium text-sm">Checking available reward slots...</p>
+                        <p id="loading-status" class="text-slate-300 font-medium text-sm">Matching active tasks for your region...</p>
                         <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                            <div id="verify-bar" class="bg-brand-accent h-full w-0 transition-all duration-500"></div>
+                            <div id="verify-bar" class="bg-freecash-500 h-full w-0 transition-all duration-500"></div>
                         </div>
                     </div>
 
-                    <!-- QUIZ STEP 5: Final Success / Offer Link Display -->
+                    <!-- STEP 5: Final Call-to-Action -->
                     <div id="step-success" class="text-center space-y-5 hidden animate-slide-up">
-                        <div class="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto text-brand-accent text-3xl">
+                        <div class="w-14 h-14 bg-freecash-500/20 rounded-full flex items-center justify-center mx-auto text-freecash-500 text-2xl">
                             <i class="fas fa-check-circle"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-white">Reward Reserved!</h3>
+                            <h3 class="text-xl font-bold text-white">Matching Offers Ready!</h3>
                             <p class="text-slate-300 text-xs sm:text-sm mt-1">
-                                Click below to complete your partner deals & claim your $750 instantly.
+                                Sign up on Freecash to start completing tasks and earning variable rewards.
                             </p>
                         </div>
                         
-                        <a href="YOUR_CPA_CPE_AFFILIATE_LINK_HERE" target="_blank" rel="noopener" class="block w-full py-4 bg-gradient-to-r from-brand-accent via-emerald-400 to-teal-400 text-slate-950 font-black text-lg rounded-2xl shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 glow-btn uppercase tracking-wider">
-                            CLAIM REWARD NOW <i class="fas fa-arrow-right ml-2"></i>
+                        <!-- Freecash CPA / CPE Affiliate Link Endpoint -->
+                        <a href="YOUR_FREECASH_AFFILIATE_LINK_HERE" target="_blank" rel="noopener" class="block w-full py-4 bg-gradient-to-r from-freecash-500 to-emerald-400 text-slate-950 font-black text-base rounded-2xl shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 freecash-btn-glow uppercase tracking-wider">
+                            CONTINUE TO FREECASH <i class="fas fa-arrow-right ml-1"></i>
                         </a>
 
-                        <p class="text-[10px] text-slate-400 flex items-center justify-center gap-1">
-                            <i class="fas fa-lock text-brand-accent"></i> 256-Bit SSL Secured & Verified Connection
+                        <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1">
+                            <i class="fas fa-info-circle text-freecash-500"></i> Free to register • Payouts depend on completed offers
                         </p>
                     </div>
 
@@ -262,208 +252,158 @@
 
         </div>
 
-        <!-- 3-Step Simple Process Section -->
+        <!-- How Earnings Work Section -->
         <section class="py-12 border-t border-slate-800/80">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">3 Simple Steps to Get Paid</h2>
-                <p class="text-slate-400 text-sm mt-2">Follow these fast steps to claim your reward without any hassle.</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">How Task Earnings Work</h2>
+                <p class="text-slate-400 text-sm mt-2">Freecash provides reward coins for testing games and software products.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 relative">
+            <div class="grid md:grid-cols-3 gap-6">
                 <!-- Step 1 -->
-                <div class="glass-card rounded-2xl p-6 relative group hover:border-brand-500/50 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-4 group-hover:scale-110 transition-transform">
+                <div class="bg-freecash-card rounded-2xl p-6 border border-slate-800/80">
+                    <div class="w-10 h-10 rounded-xl bg-freecash-500/10 border border-freecash-500/30 flex items-center justify-center text-freecash-500 font-bold text-lg mb-4">
                         1
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Answer Questions</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Complete the quick eligibility quiz above so we can match you with available partner deals in your region.
+                    <h3 class="text-base font-bold text-white mb-2">Select an Offer</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Browse featured app installs, mobile game progression milestones, or opinion surveys listed on Freecash.
                     </p>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="glass-card rounded-2xl p-6 relative group hover:border-brand-500/50 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-4 group-hover:scale-110 transition-transform">
+                <div class="bg-freecash-card rounded-2xl p-6 border border-slate-800/80">
+                    <div class="w-10 h-10 rounded-xl bg-freecash-500/10 border border-freecash-500/30 flex items-center justify-center text-freecash-500 font-bold text-lg mb-4">
                         2
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Complete 2-3 Deals</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Try featured mobile apps, games, or quick partner surveys. Make sure to complete the required steps for each deal.
+                    <h3 class="text-base font-bold text-white mb-2">Complete Task Goals</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Reach in-game levels or fulfill specified test requirements. Each milestone awards coins to your account.
                     </p>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="glass-card rounded-2xl p-6 relative group hover:border-brand-500/50 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-4 group-hover:scale-110 transition-transform">
+                <div class="bg-freecash-card rounded-2xl p-6 border border-slate-800/80">
+                    <div class="w-10 h-10 rounded-xl bg-freecash-500/10 border border-freecash-500/30 flex items-center justify-center text-freecash-500 font-bold text-lg mb-4">
                         3
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Receive Direct Transfer</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Once verified, your reward funds will be directly sent to your preferred payout method or Cash App $cashtag!
+                    <h3 class="text-base font-bold text-white mb-2">Cash Out Rewards</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        Withdraw your earned coins for PayPal cash, crypto (Bitcoin/Litecoin), or popular digital gift cards.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- User Reviews & Social Proof Section -->
+        <!-- Compliant Community Feedback -->
         <section class="py-12 border-t border-slate-800/80">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                    <div class="flex items-center gap-1 text-yellow-400 text-sm mb-1">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span class="text-slate-300 font-semibold ml-2 text-xs">4.9 / 5.0 Rating</span>
-                    </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Recent Payout Recipients</h2>
-                </div>
-                <div class="text-xs text-slate-400">
-                    Updated live from verified completions
-                </div>
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Community User Experiences</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-1">Real feedback from users completing app and gaming offers</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Review 1 -->
-                <div class="glass-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover" alt="User">
-                            <div>
-                                <h4 class="text-sm font-bold text-white">Jessica M.</h4>
-                                <p class="text-xs text-slate-400">Austin, TX</p>
-                            </div>
+                <!-- Compliant Review 1 -->
+                <div class="bg-freecash-card p-5 rounded-2xl border border-slate-800/80 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-slate-700 flex items-center justify-center font-bold text-slate-200 text-xs">
+                            JM
                         </div>
-                        <span class="text-brand-accent text-xs font-bold bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20">+$750 Paid</span>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Jason M.</h4>
+                            <p class="text-[11px] text-slate-400">Mobile Game Offers</p>
+                        </div>
                     </div>
                     <p class="text-xs text-slate-300 leading-relaxed">
-                        "Honestly thought it was too good to be true, but after finishing 2 mobile games and a quick survey, the transfer hit my account in less than an hour!"
+                        "Tested a strategy RPG game and earned coins for every level milestone I reached. Smooth payout once the offer tracked!"
                     </p>
-                    <div class="text-[10px] text-slate-500 flex items-center justify-between">
-                        <span>Verified Completion</span>
-                        <span>12 mins ago</span>
+                    <div class="text-[10px] text-freecash-500 flex items-center gap-1 font-medium">
+                        <i class="fas fa-check-circle"></i> Completed Game Offer
                     </div>
                 </div>
 
-                <!-- Review 2 -->
-                <div class="glass-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover" alt="User">
-                            <div>
-                                <h4 class="text-sm font-bold text-white">Marcus T.</h4>
-                                <p class="text-xs text-slate-400">Chicago, IL</p>
-                            </div>
+                <!-- Compliant Review 2 -->
+                <div class="bg-freecash-card p-5 rounded-2xl border border-slate-800/80 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-slate-700 flex items-center justify-center font-bold text-slate-200 text-xs">
+                            K2
                         </div>
-                        <span class="text-brand-accent text-xs font-bold bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20">+$750 Paid</span>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Kira T.</h4>
+                            <p class="text-[11px] text-slate-400">App Testing</p>
+                        </div>
                     </div>
                     <p class="text-xs text-slate-300 leading-relaxed">
-                        "Super straightforward process. Make sure to follow the task instructions carefully so your completions get tracked right away!"
+                        "Great platform for extra earnings in my free time. The payout options are fast once you meet the minimum cashout."
                     </p>
-                    <div class="text-[10px] text-slate-500 flex items-center justify-between">
-                        <span>Verified Completion</span>
-                        <span>34 mins ago</span>
+                    <div class="text-[10px] text-freecash-500 flex items-center gap-1 font-medium">
+                        <i class="fas fa-check-circle"></i> Verified User
                     </div>
                 </div>
 
-                <!-- Review 3 -->
-                <div class="glass-card p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover" alt="User">
-                            <div>
-                                <h4 class="text-sm font-bold text-white">Amanda R.</h4>
-                                <p class="text-xs text-slate-400">Miami, FL</p>
-                            </div>
+                <!-- Compliant Review 3 -->
+                <div class="bg-freecash-card p-5 rounded-2xl border border-slate-800/80 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-slate-700 flex items-center justify-center font-bold text-slate-200 text-xs">
+                            DL
                         </div>
-                        <span class="text-brand-accent text-xs font-bold bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20">+$750 Paid</span>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Derrick L.</h4>
+                            <p class="text-[11px] text-slate-400">Surveys & Tasks</p>
+                        </div>
                     </div>
                     <p class="text-xs text-slate-300 leading-relaxed">
-                        "Easiest extra cash I've made this month. The phone game was actually pretty fun to play too. Highly recommended!"
+                        "Follow the instructions closely for app tasks. Total earnings vary depending on how many deals you choose to finish."
                     </p>
-                    <div class="text-[10px] text-slate-500 flex items-center justify-between">
-                        <span>Verified Completion</span>
-                        <span>1 hour ago</span>
+                    <div class="text-[10px] text-freecash-500 flex items-center gap-1 font-medium">
+                        <i class="fas fa-check-circle"></i> Verified User
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Floating Live Social Proof Popup Container -->
-    <div id="live-toast" class="fixed bottom-4 left-4 z-50 transform translate-y-24 opacity-0 transition-all duration-500 max-w-xs w-full">
-        <div class="glass-panel p-3.5 rounded-2xl shadow-2xl border border-brand-500/30 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent font-bold flex-shrink-0">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="text-xs">
-                <p class="font-bold text-white" id="toast-title">David K. just claimed $750!</p>
-                <p class="text-slate-400 text-[10px]" id="toast-sub">Completed 2 deals via Mobile • 2m ago</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Section -->
-    <footer class="w-full bg-slate-950 border-t border-slate-800/80 py-8 px-4 text-slate-500 text-xs mt-auto">
+    <!-- Compliant Footer -->
+    <footer class="w-full bg-slate-950 border-t border-slate-800/80 py-8 px-4 text-slate-400 text-xs mt-auto">
         <div class="max-w-6xl mx-auto space-y-4 text-center">
             
-            <div class="flex items-center justify-center gap-6 text-slate-400 font-medium">
-                <a href="#" class="hover:text-slate-200 transition-colors">Privacy Policy</a>
+            <div class="flex items-center justify-center gap-4 text-slate-300 font-medium text-xs">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                 <span>•</span>
-                <a href="#" class="hover:text-slate-200 transition-colors">Terms & Conditions</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
                 <span>•</span>
-                <a href="#" class="hover:text-slate-200 transition-colors">Contact Support</a>
+                <a href="#" class="hover:text-white transition-colors">Affiliate Disclosure</a>
             </div>
 
-            <!-- Standard CPA / CPE Disclaimer -->
+            <!-- Mandatory Task & Earning Compliance Disclosure -->
             <p class="max-w-3xl mx-auto leading-relaxed text-[11px] text-slate-400">
-                <strong>Disclaimer:</strong> This website is an independent promotional landing page and is NOT affiliated with, endorsed by, or sponsored by Cash App, Block, Inc., or any of their trademarks. Trademarks, service marks, logos, and/or domain names are the property of their respective owners. Users must complete required sponsored deals and tasks to become eligible for rewards.
+                <strong>Disclaimer & Earnings Disclosure:</strong> This website is an independent affiliate promotional landing page for Freecash. Earnings are not guaranteed and depend entirely on user activity, location, offer availability, and successful task/deal completion according to partner terms. All product names, logos, and brands are property of their respective owners.
             </p>
 
             <p class="text-[10px] text-slate-400">
-                &copy; <span id="year"></span> CashRewards Promotion. All rights reserved.
+                &copy; <span id="year"></span> Freecash Partner Promotion. All rights reserved.
             </p>
         </div>
     </footer>
 
     <script>
-        // Set current year in footer
+        // Set dynamic copyright year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Timer Logic (5 Minute Countdown)
-        let totalSeconds = 299; // 4:59
-        const timerElement = document.getElementById('timer');
-
-        function updateTimer() {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            if (totalSeconds > 0) {
-                totalSeconds--;
-            } else {
-                totalSeconds = 300; // Reset
-            }
-        }
-        setInterval(updateTimer, 1000);
-
-        // Step Progression Logic
+        // Quiz Step Navigation Logic
         function nextStep(stepNumber) {
-            // Hide all steps
             document.getElementById('step-1').classList.add('hidden');
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.add('hidden');
 
-            // Show selected step
             document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
 
-            // Update Progress Bar Width
             const progress = document.getElementById('quiz-progress');
             if (stepNumber === 2) progress.style.width = '66%';
             if (stepNumber === 3) progress.style.width = '100%';
         }
 
-        // Verification & Claim Animation Logic
+        // Processing & Matcher Logic
         function startVerification() {
             document.getElementById('step-3').classList.add('hidden');
             document.getElementById('step-loading').classList.remove('hidden');
@@ -471,53 +411,26 @@
             const statusText = document.getElementById('loading-status');
             const verifyBar = document.getElementById('verify-bar');
 
-            // Animation sequence
             setTimeout(() => {
-                verifyBar.style.width = '35%';
-                statusText.textContent = 'Verifying platform compatibility...';
-            }, 600);
+                verifyBar.style.width = '40%';
+                statusText.textContent = 'Checking partner offer inventories...';
+            }, 500);
 
             setTimeout(() => {
-                verifyBar.style.width = '70%';
-                statusText.textContent = 'Checking remaining reward slots...';
-            }, 1400);
+                verifyBar.style.width = '80%';
+                statusText.textContent = 'Filtering available tasks...';
+            }, 1200);
 
             setTimeout(() => {
                 verifyBar.style.width = '100%';
-                statusText.textContent = 'Slot Reserved! Redirecting...';
-            }, 2200);
+                statusText.textContent = 'Offers matched successfully!';
+            }, 1800);
 
             setTimeout(() => {
                 document.getElementById('step-loading').classList.add('hidden');
                 document.getElementById('step-success').classList.remove('hidden');
-            }, 2800);
+            }, 2300);
         }
-
-        // Simulated Live Activity Toast Feed
-        const names = ['Sarah M.', 'David K.', 'Tyler B.', 'Chloe W.', 'Brandon P.', 'Evelyn S.'];
-        const actions = ['just claimed $750!', 'completed 2 mobile deals!', 'reserved a payout slot!', 'received Cash App transfer!'];
-        
-        function showToast() {
-            const toast = document.getElementById('live-toast');
-            const toastTitle = document.getElementById('toast-title');
-            
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            const randomAction = actions[Math.floor(Math.random() * actions.length)];
-
-            toastTitle.textContent = `${randomName} ${randomAction}`;
-
-            // Show toast
-            toast.classList.remove('translate-y-24', 'opacity-0');
-
-            // Hide after 4 seconds
-            setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 4000);
-        }
-
-        // Trigger toast periodically
-        setInterval(showToast, 9000);
-        setTimeout(showToast, 2000); // Initial popup after 2 seconds
     </script>
 </body>
 </html>
